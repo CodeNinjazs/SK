@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIN Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        #pinDisplay {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pinDisplay">Enter PIN:</div>
+    <div id="buttonContainer">
+        <button onclick="addToPin(1)">1</button>
+        <button onclick="addToPin(2)">2</button>
+        <button onclick="addToPin(3)">3</button>
+        <button onclick="addToPin(4)">4</button>
+        <button onclick="addToPin(5)">5</button>
+        <button onclick="addToPin(6)">6</button>
+        <button onclick="addToPin(7)">7</button>
+        <button onclick="addToPin(8)">8</button>
+        <button onclick="addToPin(9)">9</button>
+        <button onclick="submitPin()">Submit</button>
+        <button onclick="clearPin()">Clear</button>
+    </div>
+
+    <script>
+        let pin = '';
+        const correctPin = '1234'; // Change this to your desired PIN
+        const redirectUrl = 'https://classroom.google.com/h'; // Change this to your desired URL
+
+        function addToPin(number) {
+            pin += number.toString();
+            document.getElementById('pinDisplay').innerText = 'Enter PIN: ' + pin;
+        }
+
+        function submitPin() {
+            if (pin === correctPin) {
+                window.location.href = redirectUrl; // Redirect to the specified URL
+            } else {
+                alert('Incorrect PIN. Please try again.');
+            }
+        }
+
+        function clearPin() {
+            pin = '';
+            document.getElementById('pinDisplay').innerText = 'Enter PIN:';
+        }
+    </script>
+
+</body>
+</html>
